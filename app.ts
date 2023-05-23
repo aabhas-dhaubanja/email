@@ -13,6 +13,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const port = process.env.PORT || 3001;
+
 const app = express();
 
 app.use(cors());
@@ -31,6 +33,8 @@ app.post("/", (req, res) => {
     html: `<p>Name: ${req.body.name}, Email: ${req.body.email}, Message: ${req.body.message}</p>`, // plain text body
   };
 
+  console.log(process.env.PASS);
+
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
       console.error(err);
@@ -39,4 +43,4 @@ app.post("/", (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log("listening on port 3000..."));
+app.listen(port, () => console.log(`listening on port ${port}...`));
