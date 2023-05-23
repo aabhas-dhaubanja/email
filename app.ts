@@ -17,7 +17,7 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: "https://aabhasdhaubanja.com.np" }));
 
 app.use(express.json());
 
